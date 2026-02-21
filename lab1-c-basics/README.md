@@ -240,18 +240,13 @@ lab1-c-basics/
 ├── tasks/
 │   └── tasks.txt (описание заданий)
 ├── solutions/
-│   ├── student-12345/
+│   ├── student-12/
 │   │   ├── task05/
 │   │   │   ├── main.c
 │   │   │   └── program (исполняемый, в git не добавлять!)
 │   │   └── task20/
 │   │       ├── main.c
-│   │       └── program (исполняемый, в git не добавлять!)
-│   └── student-67890/
-│       ├── task01/
-│       │   └── main.c
-│       └── task16/
-│           └── main.c
+│   │       └── program (исполняемый, в git не 
 ├── tests/
 │   └── (автоматические тесты)
 └── README.md
