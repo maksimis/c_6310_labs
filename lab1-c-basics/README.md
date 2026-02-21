@@ -181,10 +181,10 @@ git commit -m "Lab 1 solution by student {номер}: tasks {задание1} a
 
 ### 3. Запушьте изменения
 
-git push origin student-lab1-{ваш_номер}
+git push origin student-{ваш_номер}-lab1
 
 ### 4. Создайте Pull Request
-В интерфейсе GitLab/GitHub создайте PR из ветки student-lab1-{ваш_номер} в ветку main репозитория преподователя. 
+В интерфейсе GitLab/GitHub создайте PR из ветки student-{ваш_номер}-lab1 в ветку main репозитория преподователя. 
 В названии PR укажите: 
 ```
 Lab 1 solution | Student {номер} | Variant {вариант} 
@@ -246,7 +246,7 @@ lab1-c-basics/
 │   │   │   └── program (исполняемый, в git не добавлять!)
 │   │   └── task20/
 │   │       ├── main.c
-│   │       └── program (исполняемый, в git не 
+│   │       └── program (исполняемый, в git не добавлять!) 
 ├── tests/
 │   └── (автоматические тесты)
 └── README.md
