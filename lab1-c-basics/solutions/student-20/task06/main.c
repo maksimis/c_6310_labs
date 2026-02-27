@@ -38,7 +38,7 @@ int main(void) {
 }
 
 static double calculate_average(const int *array, int size) {
-    int sum = 0;
+    long long sum = 0;
     for (int i = 0; i < size; i++) {
         sum += array[i];
     }
