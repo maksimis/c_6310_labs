@@ -8,7 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h> // для рандома
 #include <time.h> // для разного рандома
-#define MAX_N 500 
+#define MAX_N 500
+#define RAND_MAX_VALUE 10
 
 int main(void) { 
     int n, sum = 0;
@@ -32,7 +33,7 @@ int main(void) {
     printf("\nМатрица: \n");
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            mas[i][j] = rand() % 10; // рандомные числа от 0 до 9
+            mas[i][j] = rand() % RAND_MAX_VALUE; // рандомные числа от 0 до 9
             printf("%d ", mas[i][j]);
         }
         printf("\n");
@@ -41,8 +42,8 @@ int main(void) {
         sum += mas[i][i] + mas[i][n - 1 - i];
     }
     if (n % 2 != 0) {
-            sum -= mas[n / 2][n / 2];
-        }
+        sum -= mas[n / 2][n / 2];
+    }
     printf("\nСумма элементов главной и побочной диагоналей равна: %d \n", sum);
     
     return 0;
