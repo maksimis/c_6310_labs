@@ -1,6 +1,6 @@
 /*
  * Лабораторная работа №1
- * Студент: 16
+ * Студент: Карпов Родион (номер: 16)
  * Вариант: 17
  * Задание: 2 (Нахождение наибольшего числа в массиве)
  */
@@ -9,15 +9,7 @@
 
 #define MAX_SIZE 100
 
-static int find_max(const int *array, int size) {
-    int max = array[0];
-    for (int i = 1; i < size; i++) {
-        if (array[i] > max) {
-            max = array[i];
-        }
-    }
-    return max;
-}
+static int find_max(const int *array, int size);
 
 int main(void) {
     int array[MAX_SIZE];
@@ -45,4 +37,14 @@ int main(void) {
     printf("Наибольший элемент: %d\n", find_max(array, size));
 
     return 0;
+}
+
+static int find_max(const int *array, int size) {
+    int max = array[0];
+    for (int i = 1; i < size; i++) {
+        if (array[i] > max) {
+            max = array[i];
+        }
+    }
+    return max;
 }
