@@ -8,14 +8,7 @@
 #include <stdio.h>
 
 #define MAX_SIZE 100
-
-static double calculate_average(const int *array, int size) {
-    int sum = 0;
-    for (int i = 0; i < size; i++) {
-        sum += array[i];
-    }
-    return (double)sum / size;
-}
+static double calculate_average(const int *array, int size);
 
 int main(void) {
     int array[MAX_SIZE];
@@ -42,4 +35,12 @@ int main(void) {
 
     printf("Среднее арифметическое: %.4f\n", calculate_average(array, size));
     return 0;
+}
+
+static double calculate_average(const int *array, int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += array[i];
+    }
+    return (double)sum / size;
 }
