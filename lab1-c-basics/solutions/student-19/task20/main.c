@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 #define ASCII_MIN 0
 #define ASCII_MAX 127
 
