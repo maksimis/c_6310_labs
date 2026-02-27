@@ -6,15 +6,23 @@
 
 #include <stdio.h>
 
-int fib(int n){
-    if(n == 0){
+long long fib(int n) {
+    if (n == 0) {
         return 0;
     }
-    else if(n == 1){
+    if (n == 1) {
         return 1;
     }
-    return fib(n - 1) + fib(n - 2);
+
+    long long a = 0, b = 1, c;
+    for (int i = 2; i <= n; i++) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
 }
+
 
 int main(void){
     int n;
@@ -23,13 +31,17 @@ int main(void){
         printf("Ошибка: вы ввели не целое число.\n");
         return 1;
     }
-    if(n < 0) {
+    if (n < 0) {
         printf("Ошибка: номер не может быть отрицательным.\n");
         return 1;
     }
 
-    int result = fib(n);
-    printf("fib(%d) = %d\n", n, result);
+    if (n > 93) {
+        printf("Предупреждение: число слишком велико, результат может быть неверным из‑за переполнения.\n");
+    }
+
+    long long result = fib(n);
+    printf("fib(%d) = %lld\n", n, result);
 
     return 0;
 }
