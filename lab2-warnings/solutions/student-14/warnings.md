@@ -16,7 +16,7 @@
     - Текст предупреждения: warning: pointer targets in initialization of 'int *' from 'unsigned int *' differ in signedness [-Wpointer-sign]
     - Объяснение: Присваивание указателя на unsigned int в int * может привести к неправильной интерпретации данных
 ## 4. использование char как индекса массива
-    - Строка: 227
+    - Строка: 27
     - Код: arr[index];
     - Текст предупреждения: warning: array subscript has type 'char' [-Wchar-subscripts]
     - Объяснение: Тип char может быть знаковым, и использование его в качестве индекса массива небезопасно
