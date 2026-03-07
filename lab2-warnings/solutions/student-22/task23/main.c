@@ -11,7 +11,7 @@ unsigned long long factorial(int n, int err0) { // -Wunused-parameter (WEXTRA)
     // WALL
     int err1 = 42; // 1 -Wunused-variable
     if (n > 9); // 2 -Wempty-body
-    if (n = 0) {} // 3 -Wparentheses
+    if (err1 = 0) {} // 3 -Wparentheses
     // WALL
 
     while (n > 1) {
@@ -50,6 +50,6 @@ int main() {
     }
     // WALL & WEXTRA
 
-    printf("Faktorial chisla %d: %llu\n", n, factorial(n, 0));
+    printf("Faktorial chisla %d: %llu\n", n, factorial(n, 1));
     return 0;
 }
