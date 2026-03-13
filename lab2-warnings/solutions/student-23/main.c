@@ -108,8 +108,11 @@ void unused_but_set_warning() {
 }
 
 // Бонус 3: -Woverflow — переполнение int
-int overflow_warning = 2147483647 + 1;
-
+void overflow_warning() {
+    int x = 2147483647;
+    int y = x + 1;
+    printf("%d", y);
+}
 
 // Бонус 4: -Wmissing-field-initializers — пропущено поле структуры
 struct Point {
@@ -139,6 +142,7 @@ int main(void) {
     type_limits_warning();
     unused_but_set_warning();
     shift_overflow_warning();
+    overflow_warning();
 
     wchar_t main_string[MAX_STRING_LENGTH];
     wchar_t substring[MAX_STRING_LENGTH];
