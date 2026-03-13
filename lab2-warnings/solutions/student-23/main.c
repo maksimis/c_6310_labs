@@ -109,11 +109,9 @@ void unused_but_set_warning() {
 
 // Бонус 3: -Woverflow — переполнение int
 void overflow_warning() {
-    int x = 2147483647;
-    int y = x + 1;
-    printf("%d", y);
+    int y = 2147483647 + 1;
+    printf("%d\n", y);
 }
-
 // Бонус 4: -Wmissing-field-initializers — пропущено поле структуры
 struct Point {
     int x;
