@@ -526,6 +526,143 @@ void test_ft_putstr_fd(void)
 	ft_putstr_fd("Test\n", -1); 
 }
 
+void test_ft_putendl_fd(void)
+{
+	ft_putendl_fd("Hello, World!", 1);
+	ft_putendl_fd(NULL, 1);   
+	ft_putendl_fd("Test", -1); 
+}
+
+void test_ft_putnbr_fd(void)
+{
+	ft_putnbr_fd(12345, 1);
+	ft_putchar_fd('\n', 1);
+	ft_putnbr_fd(-9876, 1);
+	ft_putchar_fd('\n', 1);
+	ft_putnbr_fd(2147483647, 1);
+    ft_putchar_fd('\n', 1);
+    ft_putnbr_fd(-2147483648, 1);
+	ft_putchar_fd('\n', 1);
+	ft_putnbr_fd(100, -1); 
+}
+
+void test_ft_isspace(void)
+{
+    printf("ft_isspace(' ') = %d\n", ft_isspace(' '));   // 1
+    printf("ft_isspace('\\t') = %d\n", ft_isspace('\t')); // 1
+    printf("ft_isspace('\\n') = %d\n", ft_isspace('\n')); // 1
+    printf("ft_isspace('a') = %d\n", ft_isspace('a'));     // 0
+    printf("ft_isspace('1') = %d\n", ft_isspace('1'));     // 0
+}
+
+void test_ft_strlcpy(void)
+{
+    char dst[10];
+
+    size_t len = ft_strlcpy(dst, "Hello", sizeof(dst));
+    printf("dst = \"%s\", returned = %zu\n", dst, len); 
+
+    len = ft_strlcpy(dst, "LongString", 5);
+    printf("dst = \"%s\", returned = %zu\n", dst, len); 
+
+    len = ft_strlcpy(dst, "", sizeof(dst));
+    printf("dst = \"%s\", returned = %zu\n", dst, len);
+
+    len = ft_strlcpy(NULL, "Test", 5);
+    printf("NULL dst, returned = %zu\n", len); 
+}
+
+void test_ft_strlcat(void)
+{
+    char buf[15] = "Hello, ";
+    size_t ret;
+
+    ret = ft_strlcat(buf, "world!", sizeof(buf));
+    printf("buf = \"%s\", returned = %zu\n", buf, ret); 
+
+    char buf2[5] = "Hi";
+    ret = ft_strlcat(buf2, "There", sizeof(buf2));
+    printf("buf2 = \"%s\", returned = %zu\n", buf2, ret); 
+
+    char buf3[10] = "";
+    ret = ft_strlcat(buf3, "abc", sizeof(buf3));
+    printf("buf3 = \"%s\", returned = %zu\n", buf3, ret); 
+}
+
+void test_ft_memset(void)
+{
+    char buf[10];
+
+    ft_memset(buf, 'A', 5);
+    buf[5] = '\0';
+    printf("ft_memset 5 bite = %s\n", buf); 
+
+    int arr[5];
+    ft_memset(arr, 0, sizeof(arr));
+    printf("ft_memset int array = ");
+    for (int i = 0; i < 5; i++)
+        printf("%d ", arr[i]); 
+    printf("\n");
+}
+
+void test_ft_bzero(void)
+{
+    char buf[10] = "abcdefghi";
+
+    ft_bzero(buf, 5); 
+    printf("ft_bzero 5 bite = ");
+    for (int i = 0; i < 10; i++)
+        printf("%d ", buf[i]); 
+    printf("\n");
+
+    int arr[5] = {1,2,3,4,5};
+    ft_bzero(arr, sizeof(arr)); 
+    printf("ft_bzero int array = ");
+    for (int i = 0; i < 5; i++)
+        printf("%d ", arr[i]); 
+    printf("\n");
+}
+
+void test_ft_memcpy(void)
+{
+	char src1[] = "Hello, world!";
+	char dest1[20];
+	char dest2[20];
+
+	ft_memcpy(dest1, src1, 13);
+	memcpy(dest2, src1, 13);
+	printf("%s | %s\n", dest1, dest2);
+
+	char src2[] = "Test";
+	char dest3[10] = "AAAA";
+	char dest4[10] = "AAAA";
+	ft_memcpy(dest3, src2, 0);
+	memcpy(dest4, src2, 0);
+	printf("%s | %s\n", dest3, dest4);
+
+	printf("%p\n", ft_memcpy(NULL, NULL, 0));
+}
+
+void test_ft_memmove(void)
+{
+	char str1[20] = "Hello, world!";
+	char str2[20];
+
+	ft_memmove(str2, str1, 13);
+	memmove(str2, str1, 13);
+	printf("Test 1: %s\n", str2);
+
+	char overlap[] = "1234567890";
+	ft_memmove(overlap + 2, overlap, 8);
+	printf("Test 2: %s\n", overlap);
+
+	char zero[] = "ABCDEFG";
+	ft_memmove(zero, zero + 2, 0);
+	printf("Test 3: %s\n", zero);
+
+	printf("Test 4: %p\n", ft_memmove(NULL, NULL, 0));
+}
+
 int main(void)
 {
     printf("\n=== Testirovanie 01.ft_isalpha ===\n\n");
@@ -576,5 +713,23 @@ int main(void)
     test_ft_putchar_fd();
     printf("\n=== Testirovanie 24.ft_putstr_fd===\n\n");
     test_ft_putstr_fd();
+    printf("\n=== Testirovanie 25.ft_putendl_fd===\n\n");
+    test_ft_putendl_fd();
+    printf("\n=== Testirovanie 26.ft_putnbr_fd===\n\n");
+    test_ft_putnbr_fd();
+    printf("\n=== Testirovanie 27.ft_isspace===\n\n");
+    test_ft_isspace();
+    printf("\n=== Testirovanie 28.ft_strlcpy===\n\n");
+    test_ft_strlcpy();
+    printf("\n=== Testirovanie 29.ft_strlcat===\n\n");
+    test_ft_strlcat();
+    printf("\n=== Testirovanie 30.ft_memset===\n\n");
+    test_ft_memset();
+    printf("\n=== Testirovanie 31.ft_bzero===\n\n");
+    test_ft_bzero();
+    printf("\n=== Testirovanie 32.ft_memcpy===\n\n");
+    test_ft_memcpy();
+    printf("\n=== Testirovanie 33.ft_memmove===\n\n");
+    test_ft_memmove();
     return 0;
 }
