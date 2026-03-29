@@ -650,18 +650,223 @@ void test_ft_memmove(void)
 
 	ft_memmove(str2, str1, 13);
 	memmove(str2, str1, 13);
-	printf("Test 1: %s\n", str2);
+	printf("%s\n", str2);
 
 	char overlap[] = "1234567890";
 	ft_memmove(overlap + 2, overlap, 8);
-	printf("Test 2: %s\n", overlap);
+	printf("%s\n", overlap);
 
 	char zero[] = "ABCDEFG";
 	ft_memmove(zero, zero + 2, 0);
-	printf("Test 3: %s\n", zero);
+	printf("%s\n", zero);
 
-	printf("Test 4: %p\n", ft_memmove(NULL, NULL, 0));
+	printf("%p\n", ft_memmove(NULL, NULL, 0));
 }
+
+void test_ft_lstnew(void)
+{
+	int value = 42;
+	t_list *node = ft_lstnew(&value);
+
+	if (node)
+	{
+		printf("content = %d, next = %p\n",
+			*(int *)node->content, node->next);
+		free(node);
+	}
+
+	t_list *node2 = ft_lstnew(NULL);
+
+	if (node2)
+	{
+		printf("content = %p, next = %p\n",
+			node2->content, node2->next);
+		free(node2);
+	}
+}
+
+void test_ft_lstadd_front(void)
+{
+	t_list *head = NULL;
+
+	t_list *node1 = ft_lstnew("World");
+	ft_lstadd_front(&head, node1);
+	printf("%s\n", (char *)head->content);
+
+	t_list *node2 = ft_lstnew("Hello");
+	ft_lstadd_front(&head, node2);
+	printf("%s -> %s\n",
+		(char *)head->content,
+		(char *)head->next->content);
+
+	free(node2);
+	free(node1);
+}
+
+void test_ft_lstsize(void)
+{
+	t_list *head = NULL;
+	printf("empty: %d\n", ft_lstsize(head));
+
+	t_list *n1 = ft_lstnew("A");
+	t_list *n2 = ft_lstnew("B");
+	t_list *n3 = ft_lstnew("C");
+
+	n1->next = n2;
+	n2->next = n3;
+
+	printf("3 nodes: %d\n", ft_lstsize(n1));
+
+	free(n1);
+	free(n2);
+	free(n3);
+}
+
+void test_ft_lstlast(void)
+{
+	t_list *head = NULL;
+	printf("empty: %p\n", ft_lstlast(head));
+
+	t_list *n1 = ft_lstnew("A");
+	printf("one: %s\n", (char *)ft_lstlast(n1)->content);
+
+	t_list *n2 = ft_lstnew("B");
+	t_list *n3 = ft_lstnew("C");
+
+	n1->next = n2;
+	n2->next = n3;
+
+	printf("last: %s\n", (char *)ft_lstlast(n1)->content);
+
+	free(n1);
+	free(n2);
+	free(n3);
+}
+
+void print_list(t_list *lst)
+{
+	while (lst)
+	{
+		printf("%s -> ", (char *)lst->content);
+		lst = lst->next;
+	}
+	printf("NULL\n");
+}
+void test_ft_lstadd_back(void)
+{
+	t_list *head = NULL;
+
+	t_list *n1 = ft_lstnew("A");
+	ft_lstadd_back(&head, n1);
+	print_list(head);
+
+	t_list *n2 = ft_lstnew("B");
+	t_list *n3 = ft_lstnew("C");
+
+	ft_lstadd_back(&head, n2);
+	ft_lstadd_back(&head, n3);
+	print_list(head);
+
+	// очистка
+	free(n1);
+	free(n2);
+	free(n3);
+}
+
+void	del(void *content)
+{
+	free(content);
+}
+void test_ft_lstdelone(void)
+{
+	char *str = malloc(6);
+	if (str)
+	{
+		str[0] = 'H';
+		str[1] = 'e';
+		str[2] = 'l';
+		str[3] = 'l';
+		str[4] = 'o';
+		str[5] = '\0';
+	}
+
+	t_list *node = ft_lstnew(str);
+	ft_lstdelone(node, del);
+	printf("Test 1: node deleted\n");
+
+	ft_lstdelone(NULL, del);
+	ft_lstdelone(node, NULL);
+	printf("Test 2: NULL handled\n");
+}
+
+void test_ft_lstclear(void)
+{
+	t_list *n1 = ft_lstnew(malloc(4));
+	t_list *n2 = ft_lstnew(malloc(4));
+	t_list *n3 = ft_lstnew(malloc(4));
+
+	n1->next = n2;
+	n2->next = n3;
+
+	t_list *head = n1;
+
+	ft_lstclear(&head, del);
+	printf("Test 1: head = %p\n", head);
+
+	ft_lstclear(NULL, del);
+	ft_lstclear(&head, NULL);
+	printf("Test 2: NULL handled\n");
+}
+
+void	print_content(void *content)
+{
+	printf("%s ", (char *)content);
+}
+void test_ft_lstiter(void)
+{
+	t_list *n1 = ft_lstnew("hello");
+	t_list *n2 = ft_lstnew("world");
+
+	n1->next = n2;
+
+	ft_lstiter(n1, print_content);
+	printf("\n");
+
+	free(n1);
+	free(n2);
+}
+
+void	*duplicate(void *content)
+{
+	char *str = (char *)content;
+	return strdup(str);
+}
+void	del_content(void *content)
+{
+	free(content);
+}
+void test_ft_lstmap(void)
+{
+	t_list *n1 = ft_lstnew(strdup("hello"));
+	t_list *n2 = ft_lstnew(strdup("world"));
+	n1->next = n2;
+
+	t_list *new_list = ft_lstmap(n1, duplicate, del_content);
+
+	printf("Mapped list: ");
+	while (new_list)
+	{
+		printf("%s ", (char *)new_list->content);
+		new_list = new_list->next;
+	}
+	printf("\n");
+
+	// очистка исходного списка
+	ft_lstclear(&n1, del_content);
+	// очистка нового списка
+	ft_lstclear(&new_list, del_content);
+}
+
 
 int main(void)
 {
@@ -731,5 +936,23 @@ int main(void)
     test_ft_memcpy();
     printf("\n=== Testirovanie 33.ft_memmove===\n\n");
     test_ft_memmove();
+    printf("\n=== Testirovanie 34.ft_lstnew===\n\n");
+    test_ft_lstnew();
+    printf("\n=== Testirovanie 35.ft_lstadd_front===\n\n");
+    test_ft_lstadd_front();
+    printf("\n=== Testirovanie 36.ft_lstsize===\n\n");
+    test_ft_lstsize();
+    printf("\n=== Testirovanie 37.ft_lstlast===\n\n");
+    test_ft_lstlast();
+    printf("\n=== Testirovanie 38.ft_lstadd_back===\n\n");
+    test_ft_lstadd_back();
+    printf("\n=== Testirovanie 39.ft_lstdelone===\n\n");
+    test_ft_lstdelone();
+    printf("\n=== Testirovanie 40.ft_lstclear===\n\n");
+    test_ft_lstclear();
+    printf("\n=== Testirovanie 41.ft_lstiter===\n\n");
+    test_ft_lstiter();
+    printf("\n=== Testirovanie 42.ft_lstmap===\n\n");
+    test_ft_lstmap();
     return 0;
 }
