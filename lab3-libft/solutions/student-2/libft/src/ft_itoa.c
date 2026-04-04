@@ -10,6 +10,9 @@ char *ft_itoa(int n)
     char*result;
     long nbr;
 
+    if (n == -2147483648)
+        return (ft_strdup("-2147483648"));
+
     nbr = (long)n;
     len = int_len(nbr);
     result = pre_conv(len);

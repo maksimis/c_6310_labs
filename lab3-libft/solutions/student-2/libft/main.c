@@ -333,7 +333,7 @@ static void test_split(void)
 
 static void test_itoa(void)
 {
-    long nums[] = {0, 42, -42, 2147483647, -2147483647};
+    long nums[] = {0, 42, -42, 2147483647, -2147483648};
     size_t i;
 
     printf("\n=== itoa ===\n");
