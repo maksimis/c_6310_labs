@@ -2,13 +2,6 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-enum e_criterion
-{
-	CRIT_LEN,
-	CRIT_START,
-	CRIT_DIGIT
-};
-
 typedef int	(*t_predicate)(const char *str, const char *param);
 
 typedef struct s_filter
