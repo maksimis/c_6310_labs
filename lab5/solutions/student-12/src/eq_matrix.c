@@ -5,10 +5,10 @@ int eq_matrix(matrix_t *A, matrix_t *B)
     int i;
     int j;
 
-    if (!A || !B || !A->matrix || !B->matrix)
+    if (!A || !B || !A->matrix || !B->matrix) // проверка на NULL
         return (0);
 
-    if (A->rows != B->rows || A->columns != B->columns)
+    if (A->rows != B->rows || A->columns != B->columns) // проверка размеров матриц
         return (0);
 
     i = 0;

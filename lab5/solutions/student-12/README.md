@@ -43,7 +43,7 @@ cd /d/Projects/c_6310_labs/lab5/solutions/student-12
 ```
 ```bash
 make
-$ ./matrix
+./matrix
 ```
 
 ## Проверка:

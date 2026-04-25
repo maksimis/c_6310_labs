@@ -8,7 +8,7 @@ int is_diagonal(matrix_t *A)
     if (!A || !A->matrix)
         return (0);
 
-    if (A->rows != A->columns)
+    if (A->rows != A->columns) // проверка на квадратность
         return (0);
 
     i = 0;

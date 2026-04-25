@@ -3,21 +3,23 @@
 
 int main(void)
 {
+    // переменные для хранения адресов матриц
     matrix_t *A;
     matrix_t *B;
     matrix_t *C;
 
+    // создание матриц, выделяется память,создаётся структура (двументрый массив)
     A = create_matrix(3, 3); 
     B = create_matrix(3, 3);
     C = create_matrix(3, 3);
 
-    if (!A || !B || !C)
+    if (!A || !B || !C) // если create_matrix вернет null
     {
         ft_putendl_fd("Memory allocation error", 1);
         remove_matrix(A);
         remove_matrix(B);
         remove_matrix(C);
-        return (1);
+        return (1); // завершилась с ошибкой
     }
 
     /*
@@ -44,23 +46,23 @@ int main(void)
     C->matrix[1][0] = 0; C->matrix[1][1] = 1; C->matrix[1][2] = 0;
     C->matrix[2][0] = 0; C->matrix[2][1] = 0; C->matrix[2][2] = 1;
 
-    /* одинаковость */
+    // одинаковость 
     ft_putnbr_fd(eq_matrix(A, B), 1);
     ft_putchar_fd('\n', 1);
 
-    /* симметричность */
+    // симметричность
     ft_putnbr_fd(is_symmetric(C), 1);
     ft_putchar_fd('\n', 1);
 
-    /* диагональность*/
+    // диагональность
     ft_putnbr_fd(is_diagonal(C), 1);
     ft_putchar_fd('\n', 1);
 
-    /* единичность */
+    // единичность
     ft_putnbr_fd(is_identity(C), 1);
     ft_putchar_fd('\n', 1);
 
-    /* принт */
+    // принт 
     ft_putendl_fd("Matrix A:", 1); 
     print_matrix(A);
     ft_putendl_fd("Matrix B:", 1);
