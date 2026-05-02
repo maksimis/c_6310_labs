@@ -1,18 +1,24 @@
-NAME       = filter
-CC         = gcc
-CFLAGS     = -Wall -Wextra -Werror -I./inc
+NAME = matrix
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I./inc -I./libft/inc
 
-LIBFT_DIR  = ./libft
-LIBFT      = $(LIBFT_DIR)/libft.a
+LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-SRC_DIR    = ./src
-SRCS       = $(SRC_DIR)/main.c
-OBJS       = $(SRCS:.c=.o)
+SRC_DIR = ./src
+SRCS = $(SRC_DIR)/main.c \
+       $(SRC_DIR)/create_matrix.c \
+       $(SRC_DIR)/remove_matrix.c \
+       $(SRC_DIR)/print_matrix.c \
+       $(SRC_DIR)/mult_number.c \
+       $(SRC_DIR)/transpose.c
+
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
