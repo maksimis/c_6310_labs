@@ -1,0 +1,48 @@
+Test output
+12345
+=== ПОЛНОЕ ТЕСТИРОВАНИЕ LIBFT ===
+
+1. Проверка символов:
+   ft_isalpha('A'): 1
+   ft_isdigit('5'): 1
+   ft_isalnum('Z'): 1
+   ft_isascii(65): 1
+   ft_isprint(' '): 1
+   ft_toupper('z'): 'Z'
+   ft_tolower('Q'): 'q'
+   ft_isspace('\t'): 1
+
+2. ft_strlen("Hello"): 5
+
+3. ft_strlcpy: 2 -> "Hi"
+   ft_strlcat: 8 -> "Hi World"
+
+4. ft_strchr("Hello", 'l'): "llo"
+   ft_strrchr("Hello", 'l'): "lo"
+   ft_strnstr("Hello World", "World", 11): "World"
+   ft_strncmp("Hello", "Helix", 3): 0
+
+5. ft_atoi("   -123"): -123
+   ft_itoa(-456): "-456"
+
+6. ft_calloc: 0 0 0 0 0
+   ft_strdup: "Duplicate me"
+
+7. ft_substr("Hello World", 6, 5): "World"
+   ft_strjoin("Hello ", "World"): "Hello World"
+   ft_strtrim("   Hello   ", " "): "Hello"
+   ft_split: ["Hello", "World", "from", "42"]
+   ft_strmapi("hello", to_upper): "HELLO"
+
+8. Функции вывода (проверьте вывод):
+   ft_putstr_fd:    ft_putnbr_fd: 
+=== Тест функций работы со списками ===
+Список после добавления в начало: "Third" "Second" "First" 
+Размер списка: 3
+Последний элемент: "First"
+После добавления 'Fourth' в конец: "Third" "Second" "First" "Fourth" 
+Новый размер: 4
+Новый список (в верхнем регистре): "THIRD" "SECOND" "FIRST" "FOURTH" 
+Списки очищены
+
+=== ВСЕ ТЕСТЫ ПРОЙДЕНЫ ===
