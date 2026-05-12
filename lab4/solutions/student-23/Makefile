@@ -1,4 +1,3 @@
-cat > Makefile << 'EOF'
 NAME = stats
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I./inc
@@ -27,4 +26,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-EOF
