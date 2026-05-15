@@ -1,4 +1,4 @@
-NAME = txtfile
+NAME = grep_file
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I./inc -I./libft/inc
 

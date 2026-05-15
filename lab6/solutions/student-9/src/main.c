@@ -15,6 +15,10 @@ int main(int argc, char **argv) {
     return (1);
   }
 
+  ft_putendl_fd("Original file content:", 1);
+  print_lines(lines);
+  ft_putendl_fd("", 1);
+
   result = grep_lines(lines, argv[2]);
   if (!result || !result[0]) {
     ft_putendl_fd("No matches found", 1);
