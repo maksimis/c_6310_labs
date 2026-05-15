@@ -8,8 +8,10 @@ int	main(void)
 
 	A = create_matrix(2, 3);
 	if (!A)
+	{
         ft_putendl_fd("Error: failed to create matrix A", 2);
 		return (1);
+	}
 
 	A->matrix[0][0] = 1;
 	A->matrix[0][1] = 2;
@@ -24,7 +26,7 @@ int	main(void)
 	B = mult_number(A, 2);
 	if (!B)
 	{
-		ft_putendl_fd("Error: failed to create matrix B", 2)
+		ft_putendl_fd("Error: failed to create matrix B", 2);
         remove_matrix(A);
 		return (1);
 	}
@@ -35,7 +37,7 @@ int	main(void)
 	T = transpose(A);
 	if (!T)
 	{
-        ft_putendl_fd("Error: failed to create matrix T", 2)
+        ft_putendl_fd("Error: failed to create matrix T", 2);
 		remove_matrix(A);
 		remove_matrix(B);
 		return (1);
