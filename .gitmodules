@@ -1,0 +1,3 @@
+[submodule "lab4/solutions/student-15/libft"]
+	path = lab4/solutions/student-15/libft
+	url = https://github.com/PublioElio/School-42-libft.git
