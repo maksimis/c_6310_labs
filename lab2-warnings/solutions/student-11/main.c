@@ -3,7 +3,7 @@
  * Студент: Дунаев Владислав (номер: 11)
  * Вариант: 12
  * Задание: 12 (Проверка числа на палиндром в двоичной системе)
- * Количество предупреждений: 16 (из них 6 -Wextra)
+ * Количество предупреждений: 18 (из них 6 -Wextra)
  */
 
 #include <stdio.h>
@@ -45,7 +45,6 @@ int main(int argc, char *argv[])   // argc, argv не используются -
 {
     long number = 0;
     int unused_but_set;          // unused-but-set-variable (Wextra)
-    int maybe_unused;            // maybe-uninitialized (Wextra)
 
     printf("Enter an integer: ");
     if (!read_integer(&number)) {
@@ -107,17 +106,6 @@ int main(int argc, char *argv[])   // argc, argv не используются -
     } else {
         printf("Result: the number is not a palindrome in binary.\n");
     }
-
-    // Использование maybe_uninit без инициализации (maybe-uninitialized) - Wextra
-    printf("Dummy: %d\n", maybe_unused);
-
-    // Чтобы избежать предупреждений о неиспользуемых переменных в конце
-    (void)argc;
-    (void)argv;
-    (void)unused_but_set;
-    (void)dummy_array;
-    (void)shift_test;
-    (void)p;
 
     return 0;
 }
